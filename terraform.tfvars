@@ -1,19 +1,19 @@
 ####################
 # Common Variables #
 ####################
-company       = "kopicloud"
-app_name      = "iaas"
+company       = "sitsd"
+app_name      = "privendpoint"
 environment   = "dev"
-location      = "northeurope"
-shortlocation = "ne"
+location      = "westeurope"
+shortlocation = "we"
 
 ##################
 # Authentication #
 ##################
-azure-subscription-id = "complete-this"
-azure-client-id       = "complete-this"
-azure-client-secret   = "complete-this"
-azure-tenant-id       = "complete-this"
+azure-subscription-id = "03f790fb-9d10-4bb0-ac9b-fba04605ca89"
+azure-client-id       = "49993f2c-ef59-4435-96cc-9e6f79820bb7"
+azure-client-secret   = "n2b8Q~-1Ph0HAsI8SYoQXWAOtVbltFyOFJyW9aTd"
+azure-tenant-id       = "6c1196a1-a39f-408c-9fe9-4d1c019015c6"
 
 ###########
 # Network #

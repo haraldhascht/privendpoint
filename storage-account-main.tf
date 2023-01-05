@@ -31,6 +31,12 @@ resource "azurerm_storage_account" "storage" {
   account_replication_type = "LRS"
 }
 
+
+resource "azurerm_storage_container" "container" {
+  name                  = "testdata"
+  storage_account_name  = azurerm_storage_account.storage.name
+  container_access_type = "blob"
+}
 # Create Private Endpint
 resource "azurerm_private_endpoint" "endpoint" {
   name                = "${local.sta_name}-pe"
@@ -53,5 +59,15 @@ resource "azurerm_private_dns_a_record" "dns_a" {
   resource_group_name = azurerm_resource_group.network-rg.name
   ttl                 = 300
   records             = [azurerm_private_endpoint.endpoint.private_service_connection.0.private_ip_address]
+}
+
+resource "azurerm_storage_blob" "uploadblobs" {
+  for_each = fileset(path.module, "file_uploads/*")
+ 
+  name                   = trim(each.key, "file_uploads/")
+  storage_account_name   = azurerm_storage_account.storage.name
+  storage_container_name = azurerm_storage_container.container.name
+  type                   = "Block"
+  source                 = each.key
 }
 
